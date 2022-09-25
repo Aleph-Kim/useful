@@ -23,7 +23,7 @@ $('[data-데이터셋이름="값"]')
 시간 = 시간.toISOString();
 
 // 폼 전송 차단 및 검증 후 재 전송
-$('#폼아이디').submit(function(event) {
+$('#폼아이디').submit(function (event) {
     event.preventDefault();
 
     // 검증 코드
@@ -87,7 +87,11 @@ String(숫자).padStart(2, '0');
 // 숫자 소수점 버리기
 Math.trunc(숫자);
 
-// 시간 차이 계산 (시 : 분 : 초)
+/**
+ * 시간차이를 시분초 단위로 계산해주는 함수
+ * @param {String} time 
+ * @returns {String} 시간차이
+ */
 function 시간차이(time) {
     // 현재 시간 기준으로 차이 계산
     var now_time = new Date();
@@ -95,15 +99,17 @@ function 시간차이(time) {
 
     // 시간 차이를 초 단위로 변수에 저장
     var diff_time = (deadline - now_time) / 1000;
-    var diff_hour = String(Math.floor(diff_time / (60 * 60))).padStart(2, '0');
-    var diff_minute = String(Math.floor((diff_time % diff_hour) / 60)).padStart(2, '0');
-    var diff_second = String(Math.floor(diff_time % 60)).padStart(2, '0');
+    var diff_hour = Math.floor(diff_time / (60 * 60)).zf(2);
+    var diff_minute = Math.floor((diff_time % diff_hour) / 60).zf(2);
+    var diff_second = Math.floor(diff_time % 60).zf(2);
 
     return '시간차이 = ' + diff_hour + ':' + diff_minute + ':' + diff_second;
 }
 
 // js 로드 후 생성된 html이라 on 이벤트가 감지되지 않을 때 사용
-$(document).on('click', '.태그', function() {});
+$(document).on('click', '.태그', function () {
+    console.log('click event');
+});
 
 // 오브젝트 키값 변수 사용
 var key = 'key';
@@ -112,7 +118,7 @@ var obj = {
 };
 
 // 문자형 숫자 입력받은 숫자 자리수로 변환
-String.prototype.string = function(len) {
+String.prototype.string = function (len) {
     var s = '',
         i = 0;
     while (i++ < len) {
@@ -120,12 +126,12 @@ String.prototype.string = function(len) {
     }
     return s;
 };
-String.prototype.zf = function(len) {
+String.prototype.zf = function (len) {
     return "0".string(len - this.length) + this;
 };
 
 // 정수형 숫자 입력받은 숫자 자리수로 변환
-Number.prototype.zf = function(len) {
+Number.prototype.zf = function (len) {
     return this.toString().zf(len);
 };
 
@@ -134,7 +140,7 @@ Number.prototype.zf = function(len) {
 history.scrollRestoration = "manual"
 
 // 페이지 로드 시  함수 실행
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     함수();
 });
 
