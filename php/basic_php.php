@@ -22,15 +22,18 @@ class basic_php
     public function 모델이름($where, $limit = NULL, $order_by = 'regdate DESC')
     {
         $option = NULL;
-        if ($limit == 'count') {
-            $this->select('COUNT(0)');
-            $option = 'col';
-        } else {
-            $this->select('
-                *
-			');
+        switch ($limit) {
+            case 'count':
+                $this->select('COUNT(0)');
+                $option = 'col';
+                break;
+            default:
+                $this->select('
+                    *
+                ');
+                break;
         }
-
+        
         return $this->from('테이블이름')
             ->order_by($order_by)
             ->fetch($where, $limit, $option);
