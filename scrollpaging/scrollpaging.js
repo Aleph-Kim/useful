@@ -34,10 +34,9 @@ function getDataFunction() {
 function createTagHtml(result) {
     var data_list = result.data_list;
 
-    // 가져온 데이터를 html 형식에 맞춰 append를 이용해 페이지에 추가해준다.
-    var html = '';
-
     if (data_list.length > 0) {
+        // 가져온 데이터를 html 형식에 맞춰 append를 이용해 페이지에 추가해준다.
+        var html = '';
         // 데이터가 있을 경우
         data_list.forEach((data) => {
             html += `<div>${data}</div>`;
