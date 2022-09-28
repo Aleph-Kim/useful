@@ -135,6 +135,8 @@ Number.prototype.zf = function (len) {
     return this.toString().zf(len);
 };
 
+// 강제 이벤트 발생
+$('.태그').trigger('click');
 
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual"
