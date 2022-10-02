@@ -10,7 +10,7 @@ function setTimer(end_time, tag) {
     var deadline_time = new Date(end_time);
     var now_time = new Date();
     if (now_time > deadline_time) {
-        return false;
+        $(tag).text(`타이머가 종료되었습니다.`);
     } else {
         var { diff_ms, diff_hour, diff_minute, diff_second } = calculationDiffTime(deadline_time, now_time);
         diff_time = diff_ms;
@@ -55,6 +55,7 @@ function timerStart(tag) {
     clearInterval(timer);
     var timer = setInterval(function () {
         if (diff_time == 0) {
+            $(tag).text(`타이머가 종료되었습니다.`);
             clearInterval(timer);
         } else {
             var { diff_hour, diff_minute, diff_second } = getDiffHMS(diff_time);
