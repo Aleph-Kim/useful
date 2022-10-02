@@ -75,7 +75,34 @@ function resetSaleTimer() {
     timer_arr = [];
 }
 
-// 정수형 숫자 입력받은 숫자 자리수로 변환
+/**
+ * 문자열을 입력받은 횟수만큼 반복
+ * @param {Number} len 반복 횟수
+ * @returns 반복된 문자열
+ */
+ String.prototype.string = function (len) {
+    var s = '',
+        i = 0;
+    while (i++ < len) {
+        s += this;
+    }
+    return s;
+};
+
+/**
+ * 입력받은 자리수에 부족한만큼 0을 추가한 문자열을 반환
+ * @param {Number} len 자리수
+ * @returns 입력받은 자리수만큼 0을 포함한 문자열
+ */
+String.prototype.zf = function (len) {
+    return "0".string(len - this.length) + this;
+};
+
+/**
+ * 정수형 숫자를 입력받은 자리수에 부족한만큼 0을 추가한 문자열로 반환
+ * @param {Number} len 자리수
+ * @returns {String} 입력받은 자리수만큼 0을 포함한 문자열
+ */
 Number.prototype.zf = function (len) {
     return this.toString().zf(len);
 };
