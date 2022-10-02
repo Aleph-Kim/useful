@@ -30,16 +30,14 @@ function 함수이름() {
             // 마우스 커서 로딩중으로 변경
             $('html').css("cursor", "wait");
             // ajax 함수 실행 버튼 클릭 이벤트 차단
-            $('#button').on("click.return_false", function () {
-                return false;
-            });
+            $('button').attr('onclick', 'retrun false;');
         },
         // ajax 통신 종료 시 
         complete: function () {
             // 마우스 커서 기본값으로 변경
             $('html').css("cursor", "auto");
             // ajax 함수 실행 버튼 클릭 이벤트 차단 해제
-            $('#button').off("click.return_false");
+            $('button').attr('onclick', '함수이름()');
         }
     });
 }
