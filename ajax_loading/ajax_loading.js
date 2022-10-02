@@ -1,10 +1,10 @@
 function lodingSign() {
     // 로딩 이미지 div
-    var loadingImg = `<div id='loadingImg'>
-                        <img src='loding.gif' style='width: 40px; position: relative; display: block; margin: 0px auto;'/>
+    var loading_div = `<div id='loading_div'>
+                        <img src='loding.gif' id="loading_img"/>
                     </div>`;
 
-    $('body').append(loadingImg);
+    $('body').append(loading_div);
     // 마우스 커서 로딩 중으로 변경
     $('html').css("cursor", "wait");
     // ajax 함수 실행 버튼 클릭 이벤트 차단
@@ -54,5 +54,5 @@ function lodingImgHide() {
     // ajax 함수 실행 버튼 클릭 이벤트 차단 해제
     $('button').attr('onclick', '함수이름()');
     // 로딩 이미지 삭제
-    $('#loadingImg').remove();
+    $('#loading_div').remove();
 }
