@@ -35,23 +35,10 @@ function calculationDiffTime(deadline_time, now_time) {
 }
 
 /**
- * ms 단위의 시간을 시/분/초로 계산 해주는 함수
- * @param {Number} diff_ms ms 단위 시간
- * @returns 시간 차이 시/분/초
- */
-function getDiffHMS(diff_ms) {
-    var criterion_time = Math.floor(diff_ms / 60);
-    var diff_hour = Math.floor(criterion_time / 60).zf(2);
-    var diff_minute = (criterion_time % 60).zf(2);
-    var diff_second = (diff_ms % 60).zf(2);
-    return { diff_hour, diff_minute, diff_second };
-}
-
-/**
  * 타이머 시작 / 재시작
  * @param {string} tag 타이머 텍스트가 들어갈 태그
  */
-function timerStart(tag) {
+ function timerStart(tag) {
     clearInterval(timer);
     var timer = setInterval(function () {
         if (diff_time == 0) {
@@ -64,6 +51,19 @@ function timerStart(tag) {
             diff_time--;
         }
     }, 1000);
+}
+
+/**
+ * ms 단위의 시간을 시/분/초로 계산 해주는 함수
+ * @param {Number} diff_ms ms 단위 시간
+ * @returns 시간 차이 시/분/초
+ */
+function getDiffHMS(diff_ms) {
+    var criterion_time = Math.floor(diff_ms / 60);
+    var diff_hour = Math.floor(criterion_time / 60).zf(2);
+    var diff_minute = (criterion_time % 60).zf(2);
+    var diff_second = (diff_ms % 60).zf(2);
+    return { diff_hour, diff_minute, diff_second };
 }
 
 /**

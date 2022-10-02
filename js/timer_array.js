@@ -13,18 +13,53 @@ function getDiffTime(time, key) {
     if (now_time > deadline) {
         return '타이머가 종료 되었습니다.';
     } else {
-        var diff_time = Math.trunc((deadline - now_time) / 1000);
+        var { diff_time, diff_hour, diff_minute, diff_second } = calculationDiffTime(deadline, now_time);
+
         if (timer_arr[key] == undefined) {
             timer_arr[key] = diff_time;
         }
 
-        var criterion_time = Math.floor(diff_time / 60);
-        var diff_hour = Math.floor(criterion_time / 60).zf(2);
-        var diff_minute = (criterion_time % 60).zf(2);
-        var diff_second = (diff_time % 60).zf(2);
 
         return `남은 시간 ${diff_hour}:${diff_minute}:${diff_second}</span>`;
     }
+}
+
+function calculationDiffTime(deadline, now_time) {
+    var diff_time = Math.trunc((deadline - now_time) / 1000);
+
+    var { diff_hour, diff_minute, diff_second } = getDiffHMS(diff_time);
+
+    return { diff_time, diff_hour, diff_minute, diff_second };
+}
+
+/**
+ * setInterval를 사용하여 타이머 기능을 작동시키는 함수
+ * @param {Number} time 타이머의 남은 시간 (ms단위)
+ * @param {String} key 남은 시간을 표시할 태그(id, class)
+ */
+ function setSaleTimer(time, key) {
+    var timer = setInterval(function () {
+        if (time == 0) {
+            $(`.${key}`).html('타이머가 종료 되었습니다.');
+            delete timer[key];
+            clearInterval(timer);
+        } else {
+            var { diff_hour, diff_minute, diff_second } = getDiffHMS(time);
+
+            $(`.${key}`).html(`${diff_hour}:${diff_minute}:${diff_second}`);
+            time--;
+            timer[key] = time;
+        }
+    }, 1000);
+    timer_arr.push(timer);
+}
+
+function getDiffHMS(diff_time) {
+    var criterion_time = Math.floor(diff_time / 60);
+    var diff_hour = Math.floor(criterion_time / 60).zf(2);
+    var diff_minute = (criterion_time % 60).zf(2);
+    var diff_second = (diff_time % 60).zf(2);
+    return { diff_hour, diff_minute, diff_second };
 }
 
 /**
@@ -35,34 +70,6 @@ function saleTimerStart() {
     timer_arr.forEach((time, key) => {
         setSaleTimer(time, key);
     });
-}
-
-/**
- * setInterval를 사용하여 타이머 기능을 작동시키는 함수
- * @param {Number} time 타이머의 남은 시간 (ms단위)
- * @param {String} key 남은 시간을 표시할 태그(id, class)
- */
-function setSaleTimer(time, key) {
-    var hour;
-    var min;
-    var sec;
-    var timer = setInterval(function () {
-        if (time == 0) {
-            $(`.${key}`).html('타이머가 종료 되었습니다.');
-            delete timer[key];
-            clearInterval(timer);
-        } else {
-            var criterion_time = Math.floor(time / 60);
-            hour = Math.floor(criterion_time / 60).zf(2);
-            min = (criterion_time % 60).zf(2);
-            sec = (time % 60).zf(2);
-
-            $(`.${key}`).html(`남은 시간 ${hour}:${min}:${sec}`);
-            time--;
-            timer[key] = time;
-        }
-    }, 1000);
-    timer_arr.push(timer);
 }
 
 /**
@@ -80,7 +87,7 @@ function resetSaleTimer() {
  * @param {Number} len 반복 횟수
  * @returns 반복된 문자열
  */
- String.prototype.string = function (len) {
+String.prototype.string = function (len) {
     var s = '',
         i = 0;
     while (i++ < len) {
