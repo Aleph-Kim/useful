@@ -40,6 +40,8 @@ class 유용한
         // where문에 키워드 넣기
         $where[] = "칼럼이름 LIKE " . $this->db->escape('%' . $params['keyword'] . '%');
 
+        // 배열 순서 뒤집기
+        $배열 = array_reverse($배열);
         // 오브젝트 value 값으로 배열 만들기
         $배열 = array_column($오브젝트, '키');
 
