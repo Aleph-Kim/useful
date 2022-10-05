@@ -18,6 +18,16 @@ class 유용한
         // 시간 포맷
         $시간 = date("Y-m-d H:i:s", strtotime($시간));
 
+        // 시간 연산
+        $연산후날짜 = date('Y-m-d', strtotime('연산 날짜', strtotime($날짜)));
+        // 예) 2022-04-21 12:00:00 보다 4달 뒤의 해당 일 ms
+        $four_month_ago_from = date('Y-m-d', strtotime('+4 months', strtotime(date('Y-m-d', strtotime('2022-04-21 12:00:00')))));
+        // 현재로부터의 시간은 다음과 같이 연산 가능
+        $ago_from_now = date('Y-m-d', strtotime('연산 날짜'));
+
+        // date()에 사용하는 알파벳
+        // https://www.habonyphp.com/2020/07/php-date.html
+
         // 숫자 3자리 콤마
         number_format($숫자);
 
@@ -30,9 +40,6 @@ class 유용한
 
         // 숫자 두 자리로 만들기 예) 01, 02, 03
         sprintf('%02d', $숫자);
-
-        // date()에 사용하는 알파벳
-        // https://www.habonyphp.com/2020/07/php-date.html
 
         // 시간 계산
         $시간 = date('Y-m-d H:i:s', strtotime($시간, '+1 years +1 months +1 days -1 hours -1 minutes -1 seconds'));
