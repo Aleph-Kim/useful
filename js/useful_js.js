@@ -106,6 +106,35 @@ function 시간차이(time) {
     return '시간차이 = ' + diff_hour + ':' + diff_minute + ':' + diff_second;
 }
 
+/**
+ * 입력받은 시간이 얼마나 경과 되었는지 반환하는 함수
+ * @param {string} time 과거 시간
+ * @returns {string} 경과 시간
+ */
+function get_date_diff(time) {
+    var now_time = new Date();
+    var deadline = new Date(time);
+
+    var diff_time = (now_time - deadline) / 1000;
+
+    var time_list = [
+        { time: "분", milli_seconds: 60 },
+        { time: "시간", milli_seconds: 60 * 60 },
+        { time: "일", milli_seconds: 60 * 60 * 24 },
+        { time: "개월", milli_seconds: 60 * 60 * 24 * 30 },
+        { time: "년", milli_seconds: 60 * 60 * 24 * 365 },
+    ].reverse();
+
+    for (var time of time_list) {
+        var between_time = Math.floor(diff_time / time.milli_seconds);
+
+        if (between_time > 0) {
+            return `${between_time}${time.time} 전`;
+        }
+    }
+    return "방금 전";
+}
+
 // js 로드 후 생성된 html이라 on 이벤트가 감지되지 않을 때 사용
 $(document).on('click', '.태그', function () {
     console.log('click event');
