@@ -146,12 +146,29 @@ var obj = {
     [key]: 'value'
 };
 
+// 변수 값이 함수명인 함수 사용
+eval(`${변수}()`);
+// 예)
+function 함수() {
+    console.log('성공!');
+}
+var 변수 = '함수';
+eval(`${변수}()`);
+
+
+// 이름에 변수값이 포함된 변수 생성
+eval(`var ${변수}이름 = 값`);
+// 예)
+var 변수 = '변수';
+eval(`var ${변수}이름 = 값`);
+console.log(변수이름);
+
 /**
  * 문자열을 입력받은 횟수만큼 반복
  * @param {Number} len 반복 횟수
  * @returns 반복된 문자열
  */
- String.prototype.string = function (len) {
+String.prototype.string = function (len) {
     var s = '',
         i = 0;
     while (i++ < len) {
