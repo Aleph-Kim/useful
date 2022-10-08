@@ -21,10 +21,10 @@ function setTimer(end_time, tag) {
 }
 
 /**
- * 입력 받은 두 시간의 차이를 반환하는 함수
- * @param {object} deadline_time 종료 시간
+ * 입력 받은 두 시간의 차이를 ms단위 시간, 남은 시 / 분 / 초로 반환해주는 함수
+ * @param {object} deadline 종료 시간
  * @param {object} now_time 현재 시간
- * @returns 시간 차이 시/분/초, 전체 시간 차이 ms
+ * @returns 전체에서 차이나는 ms단위 시간, 남은 시 / 분 / 초
  */
 function calculationDiffTime(deadline_time, now_time) {
     var diff_ms = Math.trunc((deadline_time - now_time) / 1000);
@@ -54,9 +54,9 @@ function calculationDiffTime(deadline_time, now_time) {
 }
 
 /**
- * ms 단위의 시간을 시/분/초로 계산 해주는 함수
- * @param {Number} diff_ms ms 단위 시간
- * @returns 시간 차이 시/분/초
+ * 입력받은 ms 단위 시간을 시 / 분 / 초 단위로 환산 해주는 함수
+ * @param {number} diff_time ms단위 시간
+ * @returns 남은 시 / 분 / 초
  */
 function getDiffHMS(diff_ms) {
     var criterion_time = Math.floor(diff_ms / 60);

@@ -1,3 +1,4 @@
+/** @type {array} 시간 차이 ms 배열 */
 var timer_arr = [];
 
 /**
@@ -23,13 +24,15 @@ function getDiffTime(time, key) {
         return `남은 시간 ${diff_hour}:${diff_minute}:${diff_second}</span>`;
     }
 }
-
+/**
+ * 입력 받은 두 시간의 차이를 ms단위 시간, 남은 시 / 분 / 초로 반환해주는 함수
+ * @param {object} deadline 종료 시간
+ * @param {object} now_time 현재 시간
+ * @returns 전체에서 차이나는 ms단위 시간, 남은 시 / 분 / 초
+ */
 function calculationDiffTime(deadline, now_time) {
     var diff_time = Math.trunc((deadline - now_time) / 1000);
-
-    var { diff_hour, diff_minute, diff_second } = getDiffHMS(diff_time);
-
-    return { diff_time, diff_hour, diff_minute, diff_second };
+    return getDiffHMS(diff_time);
 }
 
 /**
@@ -37,7 +40,7 @@ function calculationDiffTime(deadline, now_time) {
  * @param {Number} time 타이머의 남은 시간 (ms단위)
  * @param {String} key 남은 시간을 표시할 태그(id, class)
  */
- function setSaleTimer(time, key) {
+function setSaleTimer(time, key) {
     var timer = setInterval(function () {
         if (time == 0) {
             $(`.${key}`).html('타이머가 종료 되었습니다.');
@@ -54,6 +57,11 @@ function calculationDiffTime(deadline, now_time) {
     timer_arr.push(timer);
 }
 
+/**
+ * 입력받은 ms 단위 시간을 시 / 분 / 초 단위로 환산 해주는 함수
+ * @param {number} diff_time ms단위 시간
+ * @returns 남은 시 / 분 / 초
+ */
 function getDiffHMS(diff_time) {
     var criterion_time = Math.floor(diff_time / 60);
     var diff_hour = Math.floor(criterion_time / 60).zf(2);
