@@ -32,5 +32,5 @@
 <!-- 데이터가 없을 때 출력되는 태그 -->
 <div class="no_data" hidden></div>
 
-
+<!-- $.cookie 문법 사용을 위한 cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>

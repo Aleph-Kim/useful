@@ -66,7 +66,7 @@ window.onpageshow = function (event) {
             scroll_active: scroll_active,
             page: page
         }, null);
-        $.cookie("scroll_position", $(window).scrollTop(), 1);
+        $.cookie("scroll_position", $('.tag').scrollTop(), 1);
     });
 
     // 스크롤 이벤트를 감지하여 스크롤이 최하단에 도달했을 경우 조건에 따라 데이터 가져오는 함수 실행
