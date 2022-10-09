@@ -22,11 +22,7 @@ class basic_php
 ?>
 
 <!-- 페이지네이션 html -->
-<?php if (!empty($params['page'])) { ?>
-    <input type="hidden" id="page" value="<?= $params['page'] ?>">
-<?php } else { ?>
-    <input type="hidden" id="page" value="1">
-<?php } ?>
+<input type="hidden" id="page" value="<?= (!empty($params['page']) ? $params['page'] : 1) ?>">
 <div class="number_list_whole">
     <?php if ($pagination['page'] != 1) { ?>
         <a onclick="window.location.replace('<?= $pagination['base_url'] . ($pagination['page'] - 1) ?>')">
