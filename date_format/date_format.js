@@ -1,7 +1,7 @@
 /**
  * 날짜를 입력받은 형식으로 변환해주는 함수
- * @params {string} format 형식
- * @params {string, object} date 날짜
+ * @param {string} format 형식
+ * @param {string, object} date 날짜
  * @returns {string} date를 format 형식으로 변환
  */
  function dateFormat(foramt, date) {
