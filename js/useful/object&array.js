@@ -1,6 +1,6 @@
 // 오브젝트 foreach
 for (const [key, value] of Object.entries(오브젝트)) {
-    console.log()
+    console.log();
 }
 
 // 오브젝트 값이 비어있는지 확인

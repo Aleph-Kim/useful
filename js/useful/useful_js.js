@@ -1,5 +1,5 @@
 // 체크박스 체크 여부 확인
-$('input:checkbox[id="아이디"]').is(":checked")
+$('input:checkbox[id="아이디"]').is(":checked");
 // 체크박스 체크 처리
 $('input:checkbox[id="아이디"]').prop("checked", true);
 // 라디오 타입 인풋 체크 되어있는 값 가져오기
@@ -9,7 +9,7 @@ $('input[name=radioName]:checked').val();
 $("#아이디").prop(".클래스");
 
 // 태그의 요소로 값 가져오기 (예시 : data)
-$('[data-데이터셋이름="값"]')
+$('[data-데이터셋이름="값"]');
 
 // 폼 전송 차단 및 검증 후 재 전송
 $('#폼아이디').submit(function (event) {
@@ -47,7 +47,7 @@ eval(`var ${변수}이름 = 값`);
 $('.태그').trigger('click');
 
 // 새로고침 시 스크롤 최상단으로 이동
-history.scrollRestoration = "manual"
+history.scrollRestoration = "manual";
 
 // 페이지 로드 시  함수 실행
 document.addEventListener("DOMContentLoaded", function () {
