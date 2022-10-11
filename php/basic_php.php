@@ -35,6 +35,7 @@ class basic_php
         }
 
         return $this->from('테이블이름')
+            ->join('연관테이블', '조건')
             ->order_by($order_by)
             ->fetch($where, $limit, $option);
     }
