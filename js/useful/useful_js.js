@@ -46,6 +46,21 @@ eval(`var ${변수}이름 = 값`);
 // 강제 이벤트 발생
 $('.태그').trigger('click');
 
+// js 클릭 이벤트 부여 / 삭제
+function event() {
+    console.log('evner!');
+};
+
+function eventDetectStart() {
+    var tag = document.getElementsByClassName(`tag`)[0];
+    tag.addEventListener('click', event);
+}
+
+function eventDetectEnd() {
+    var tag = document.getElementsByClassName(`tag`)[0];
+    tag.removeEventListener('click', event);
+}
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
