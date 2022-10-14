@@ -22,6 +22,18 @@ String(숫자).padStart(2, '0');
 // 숫자 소수점 버리기
 Math.trunc(숫자);
 
+// 소수점 입력 제한
+$('인풋').on('keyup', function (event) {
+    event = event || window.event;
+    var char_code = event.which || event.keyCode;
+
+    if (char_code === 190) {
+        return false;
+    }
+
+    this.value = Number(Number(this.value).toFixed(3));
+});
+
 /**
  * 문자열을 입력받은 횟수만큼 반복
  * @param {Number} len 반복 횟수
