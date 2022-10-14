@@ -13,6 +13,9 @@ function addComma(num) {
     return num.toString().replace(regexp, ',');
 }
 
+// ,가 포함되어 있는 숫자에 , 제거
+var 새숫자 = 숫자.replace(/,/g, '');
+
 // 숫자 두 자리로 만들기 예) 01, 02, 03
 String(숫자).padStart(2, '0');
 
