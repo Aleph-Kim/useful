@@ -41,6 +41,10 @@ class 유용한
         // 숫자 두 자리로 만들기 예) 01, 02, 03
         sprintf('%02d', $숫자);
 
+        // 소수점 제한
+        // 예) 0.000, 0.100, 0.200
+        (double)number_format($숫자, $제한자리수, '.', '');
+
         // 시간 계산
         $시간 = date('Y-m-d H:i:s', strtotime($시간, '+1 years +1 months +1 days -1 hours -1 minutes -1 seconds'));
 
