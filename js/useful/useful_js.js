@@ -60,6 +60,13 @@ function eventDetectEnd() {
     tag.removeEventListener('click', clickEvent);
 }
 
+// 클릭 이벤트 1회만 실행
+$('tag').on('click', function () {
+    eventFunction();
+    // arguments.callee 사용 시 함수에서 자신을 호출할 수 있음
+    $('tag').off('click', arguments.callee);
+});
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
