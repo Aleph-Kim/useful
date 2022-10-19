@@ -47,18 +47,17 @@ eval(`var ${변수}이름 = 값`);
 $('.태그').trigger('click');
 
 // js 클릭 이벤트 부여 / 삭제
-function event() {
+function clickEvent() {
     console.log('evner!');
 };
-
 function eventDetectStart() {
     var tag = document.getElementsByClassName(`tag`)[0];
-    tag.addEventListener('click', event);
+    tag.addEventListener('click', clickEvent);
 }
 
 function eventDetectEnd() {
     var tag = document.getElementsByClassName(`tag`)[0];
-    tag.removeEventListener('click', event);
+    tag.removeEventListener('click', clickEvent);
 }
 
 // 새로고침 시 스크롤 최상단으로 이동
