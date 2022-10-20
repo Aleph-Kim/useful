@@ -43,7 +43,7 @@ class 유용한
 
         // 소수점 제한
         // 예) 0.000, 0.100, 0.200
-        (double)number_format($숫자, $제한자리수, '.', '');
+        (float)number_format($숫자, $제한자리수, '.', '');
 
         // 시간 계산
         $시간 = date('Y-m-d H:i:s', strtotime($시간, '+1 years +1 months +1 days -1 hours -1 minutes -1 seconds'));
@@ -58,5 +58,10 @@ class 유용한
 
         // 문자열 포함 여부 체크
         strpos($문자열, '찾을 문자');
+
+        // 문자열 템플릿(큰 따옴표만 가능)
+        $text = '456';
+        $sum = "123{$text}";
+        // 결과 : 123456
     }
 }
