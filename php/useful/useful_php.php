@@ -54,6 +54,9 @@ class Useful_php
         // 배열 안에 특정 값이 있는지
         $bool = in_array($배열, $값);
 
+        // 배열 합치기
+        $합배열  = array_merge($배열1, $배열2);
+
         // 문자열 포함 여부 체크
         strpos($문자열, '찾을 문자');
 
