@@ -18,3 +18,29 @@ var num_reg = /[^0-9]/;
 
 // 년-월-일 (YYYY-mm-dd)
 var date_reg = /(\d{4})(\d{2})(\d{2})/;
+
+
+// 소수점 제한 함수
+var prev_demical_input = "";
+function demicalLimit() {
+    // {0,3} = 소수점 3자리 제한
+    var regexp = /^(0|[1-9]\d*)(\.\d{0,3})?$/;
+
+    var input = $(this).val().replace(/,/gi, "");
+
+    if (input == '') {
+        input = "";
+        $(this).val("");
+        return false;
+    }
+
+    if (input.search(regexp) == -1) {
+        input = prev_demical_input;
+        $(this).val(input);
+    } else {
+        prev_demical_input = input;
+        $(this).val(prev_demical_input);
+    }
+}
+
+$('#input').on('keyup', demicalLimit);
