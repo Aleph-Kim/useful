@@ -28,9 +28,26 @@
 
 
 <!-- html이 추가 될 태그 -->
-<div class="tag"></div>
-<!-- 데이터가 없을 때 출력되는 태그 -->
-<div class="no_data" hidden></div>
+<div class="paging1_tag"></div>
+<div class="paging2_tag"></div>
+<div class="paging3_tag"></div>
+<div class="paging4_tag"></div>
 
 <!-- $.cookie 문법 사용을 위한 cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/assets/js/people/scrollpaging_array.js"></script>
+<script>
+    window.onpageshow = function(event) {
+        paging_data_obj = {
+            paging1: new PagingObj('paging1', $('.paging1_tag'), $('.paging1_tag')),
+            paging2: new PagingObj('paging2', window, $('.paging2_tag')),
+            paging3: new PagingObj('paging3', $('.paging3_tag'), $('.paging3_tag')),
+            paging4: new PagingObj('paging4', window, $('.paging4_tag'))
+        };
+
+        saveCurrentPage();
+
+        checkBackwardsEvent(event);
+    }
+</script>
