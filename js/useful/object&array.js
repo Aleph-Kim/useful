@@ -14,3 +14,6 @@ var obj = {
 
 // 배열에서 특정 값 삭제
 arr = arr.filter(item => item !== value);
+
+// 배열에서 특정 값 찾기
+search = array.find(piece => piece.key === 'value');
