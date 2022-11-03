@@ -1,5 +1,5 @@
 // 숫자가 아닌 문자 삭제
-문자열.replace(/[^0-9]/, '');
+문자열.replace(/[^0-9]/g, '');
 
 // 숫자만 입력 가능
 function keyupNumber(ths) {
