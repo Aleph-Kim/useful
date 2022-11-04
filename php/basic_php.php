@@ -71,4 +71,20 @@ class basic_php
         file_put_contents($pull_path, $data);
         return str_replace($tempPath, $tempURL, $pull_path);
     }
+
+    /**
+     * 이미지를 삭제하는 함수
+     * @param string $img 이미지 경로
+     */
+    function delete_prev_img($img)
+    {
+        // 이미지 저장 경로
+        $tempPath = ATTACH_PATH . 'upload/';
+
+        $old_img = explode('/', $img)[3];
+        $file = $tempPath . $old_img;
+        if (file_exists($file)) {
+            unlink($tempPath . $old_img);
+        }
+    }
 }
