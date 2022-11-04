@@ -1,5 +1,14 @@
 // 휴대전화번호
-var cell_phone_reg = /^\d{3}\d{3,4}\d{4}$/;
+var cell_phone_reg = /^(\d{2,3})(\d{3,4})(\d{4})$/;
+
+/**
+ * 전화번호 자동 하이픈 변환
+ * @param {*} phone 전화번호
+ * @returns 하이픈이 추가된 전화번호
+ */
+ function phoneNumberFormat(phone) {
+    return phone.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}
 
 // 일반번호
 var phone_reg = /^\d{2,3}\d{3,4}\d{4}$/;

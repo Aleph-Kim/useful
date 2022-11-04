@@ -39,7 +39,7 @@ $('인풋').on('keyup', function (event) {
  * @param {Number} len 반복 횟수
  * @returns 반복된 문자열
  */
- String.prototype.string = function (len) {
+String.prototype.string = function (len) {
     var s = '',
         i = 0;
     while (i++ < len) {
