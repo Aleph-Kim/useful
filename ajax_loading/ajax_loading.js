@@ -1,7 +1,7 @@
-function lodingSign() {
+function loadingImgShow() {
     // 로딩 이미지 div
     var loading_div = `<div id='loading_div'>
-                        <img src='loding.gif' id="loading_img"/>
+                        <img src='loading.gif' id="loading_img"/>
                     </div>`;
 
     $('body').append(loading_div);
@@ -14,7 +14,7 @@ function lodingSign() {
 // 기본 ajax 함수
 function 함수이름() {
     // 로딩 이미지 출력
-    lodingImgShow();
+    loadingImgShow();
     var Params = {};
     $.ajax({
         url: "/url",
@@ -43,12 +43,12 @@ function 함수이름() {
         // ajax 통신 종료 시 
         complete: function () {
             // 로딩 이미지 종료
-            lodingImgHide();
+            loadingImgHide();
         }
     });
 }
 
-function lodingImgHide() {
+function loadingImgHide() {
     // 마우스 커서 기본값으로 변경
     $('html').css("cursor", "auto");
     // ajax 함수 실행 버튼 클릭 이벤트 차단 해제
