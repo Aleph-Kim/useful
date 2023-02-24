@@ -19,5 +19,8 @@ class basic_php
         list($testController, $actionID) = Yii::app()->createController('test');
         // 함수 호출
         $testController->testFunction();
+
+        // 내 ip 가져오기
+        $userIp = Yii::app()->request->userHostAddress;
     }
 }
