@@ -22,5 +22,9 @@ class basic_php
 
         // 내 ip 가져오기
         $userIp = Yii::app()->request->userHostAddress;
+
+        // 내 브라우저 정보 가져오기
+        $userAgent = Yii::app()->request->userAgent;
+        }
     }
 }
