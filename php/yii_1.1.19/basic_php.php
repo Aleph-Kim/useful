@@ -12,14 +12,12 @@ class basic_php
         echo CVarDumper::dumpAsString($obj, $depth, true);
         exit;
     }
-    
-    /**
-     * 다른 클래스의 함수를 사용하는 방법
-     */
-    function otherControllerFunctionUse(){
-        // TestController 클래스 생성
+
+    function basic(){
+        // 다른 클래스의 함수를 사용하는 방법
+        // 클래스 생성
         list($testController, $actionID) = Yii::app()->createController('test');
-        // testFunction() 함수 호출
+        // 함수 호출
         $testController->testFunction();
     }
 }
