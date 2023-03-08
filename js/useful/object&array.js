@@ -17,11 +17,3 @@ arr = arr.filter(item => item !== value);
 
 // 배열에서 특정 값 찾기
 search = array.find(piece => piece.key === 'value');
-
-// 폼 전송을 차단하고 해당 폼의 값을 콘솔에 출력하는 코드
-const form = document.querySelector('#폼_아이디');
-form.addEventListener('submit', (event) => {
-    // 폼 전송을 중지합니다.
-    event.preventDefault();
-    console.log(new FormData(form));
-});
