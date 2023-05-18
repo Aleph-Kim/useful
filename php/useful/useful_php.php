@@ -47,7 +47,7 @@ class Useful_php
 
         // 배열 순서 뒤집기
         $배열 = array_reverse($배열);
-        
+
         // 오브젝트 value 값으로 배열 만들기
         $배열 = array_column($오브젝트, '키');
 

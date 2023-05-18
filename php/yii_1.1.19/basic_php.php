@@ -7,13 +7,15 @@ class basic_php
      * @param int $depth 출력할 데이터 깊이
      * @return string HTML 형식으로 출력된 문자열
      */
-    function dumpObject($obj, $depth = 999) {
+    function dumpObject($obj, $depth = 999)
+    {
         Yii::import('system.utils.CVarDumper');
         echo CVarDumper::dumpAsString($obj, $depth, true);
         exit;
     }
 
-    function basic(){
+    function basic()
+    {
         // 다른 클래스의 함수를 사용하는 방법
         // 클래스 생성
         list($testController, $actionID) = Yii::app()->createController('test');
@@ -25,6 +27,5 @@ class basic_php
 
         // 내 브라우저 정보 가져오기
         $userAgent = Yii::app()->request->userAgent;
-        }
     }
 }
