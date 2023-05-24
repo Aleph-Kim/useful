@@ -69,4 +69,21 @@ class Masking
         return $mValue;
     }
     // 출처 - https://link2me.tistory.com/2027
+
+
+    /**
+     * 이메일 마스킹
+     * @return String 마스킹된 이메일(te**@g****.com) 
+     */
+    function EmailMasking($str)
+    {
+        // 마스킹 처리하는 길이(이메일 길이의 절반)
+        $masking_size = round(strlen(explode('@', $str)[0]) / 2);
+
+        $pattern = '/(\w+)(\w{' . $masking_size . '})(@.{1})([\w*?]+)(.+)/i';
+        $replace = '\1' . str_repeat('*', $masking_size) . '\3****\5';
+        $str = preg_replace($pattern, $replace, $str);
+
+        return $str;
+    }
 }
