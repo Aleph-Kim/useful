@@ -46,7 +46,7 @@ class Masking
     /**
      * 이름 마스킹
      */
-    function letterMasking($str)
+    function nameMasking($str)
     {
         $str = str_replace('-', '', $str);
         $strlen = mb_strlen($str, 'utf-8');
