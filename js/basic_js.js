@@ -5,7 +5,7 @@ function 함수이름() {
         url: "/url",
         type: 'POST',
         data: Params,
-        datatype: 'json',
+        dataType: 'json',
         // ajax 통신 성공 시
         success: function (result) {
             switch (result.status) {
