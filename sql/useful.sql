@@ -13,3 +13,21 @@ CREATE TABLE IF NOT EXISTS `new_table` LIKE `old_table`;
 
 -- 테이블 구조 + 데이터 복사
 CREATE TABLE IF NOT EXISTS `new_table` SELECT * FROM `old_table`;
+
+-- 정규식 조건문
+SELECT *
+FROM 테이블명
+WHERE 칼럼명 REGEXP '정규식조건';
+-- EX) 1, 2, 3으로 시작하는 값만 가져오는 조건
+SELECT *
+FROM 테이블명
+WHERE 칼럼명 REGEXP '^1|^2|^3';
+
+-- 정규식 리스트
+. : 문자 하나
+* : 앞 글자의 *개수 숫자 이상 반복
+^ : 첫값
+$ : 끝값
+[.] : 괄호 안의 문자열 일치 확인
+{.} : 반복
+| : or
