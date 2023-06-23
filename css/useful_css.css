@@ -1,0 +1,7 @@
+/* 텍스트 줄바꿈 제한 */
+.텍스트제한태그 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Ex) 2줄 제한 */
+    -webkit-box-orient: vertical;
+}
