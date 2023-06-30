@@ -46,18 +46,11 @@ eval(`var ${변수}이름 = 값`);
 // 강제 이벤트 발생
 $('.태그').trigger('click');
 
-// js 클릭 이벤트 부여 / 삭제
-function clickEvent() {
-    console.log('evner!');
-};
+// js 클릭 이벤트
 function eventDetectStart() {
-    var tag = document.getElementsByClassName(`tag`)[0];
-    tag.addEventListener('click', clickEvent);
-}
-
-function eventDetectEnd() {
-    var tag = document.getElementsByClassName(`tag`)[0];
-    tag.removeEventListener('click', clickEvent);
+    var tag = document.getElementsByClassName(`tag`)[0]; 
+    tag.addEventListener('click', clickEvent); // 부여
+    tag.removeEventListener('click', clickEvent); // 삭제
 }
 
 // 클릭 이벤트 1회만 실행
