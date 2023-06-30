@@ -60,6 +60,26 @@ $('tag').on('click', function () {
     $('tag').off('click', arguments.callee);
 });
 
+/**
+ * 클립보드 복사 함수
+ */
+function copyToClipboard() {
+    // 복사할 대상을 현재 url로 선언
+    var content = location.href;
+
+    if (navigator.clipboard) { // navigator.clipboard 사용 가능 시 해당 방법으로 복사
+        navigator.clipboard.writeText(content);
+    } else { // 웹 표준에서 벗어난 execCommand 함수 사용
+        var textArea = document.createElement("textarea");
+        textArea.value = content;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea)
+    }
+};
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
