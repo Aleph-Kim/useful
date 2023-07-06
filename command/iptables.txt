@@ -1,0 +1,8 @@
+# 특정 ip 차단
+iptables -A INPUT -s 000.000.000.000 -j DROP
+
+# 특정 ip 대역 차단
+iptables -A INPUT -s 000.000.000.0/24 -j DROP
+
+# 특정 ip 차단 해제
+iptables -D INPUT -s 000.000.000.000 -j DROP
