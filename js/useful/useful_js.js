@@ -4,6 +4,11 @@ $('input:checkbox[id="아이디"]').is(":checked");
 $('input:checkbox[id="아이디"]').prop("checked", true);
 // 라디오 타입 인풋 체크 되어있는 값 가져오기
 $('input[name=radioName]:checked').val();
+// 체크한 값 배열 가져오기
+var check_arr = [];
+$("input[name=input]:checked").each(function () {
+    check_arr.push($(this).val());
+});
 
 // 해당 클래스를 가지고 있는지
 $("#아이디").prop(".클래스");
@@ -48,7 +53,7 @@ $('.태그').trigger('click');
 
 // js 클릭 이벤트
 function eventDetectStart() {
-    var tag = document.getElementsByClassName(`tag`)[0]; 
+    var tag = document.getElementsByClassName(`tag`)[0];
     tag.addEventListener('click', clickEvent); // 부여
     tag.removeEventListener('click', clickEvent); // 삭제
 }
