@@ -6,3 +6,9 @@ iptables -A INPUT -s 000.000.000.0/24 -j DROP
 
 # 특정 ip 차단 해제
 iptables -D INPUT -s 000.000.000.000 -j DROP
+
+# 차단 리스트
+iptables -L 
+
+# 차단 횟수 조회
+iptables -L -nvx
