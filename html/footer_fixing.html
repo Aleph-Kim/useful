@@ -1,0 +1,30 @@
+<!-- 푸터가 화면 최하단에 고정되어 있는 기본 레이아웃 -->
+<html lang="ko">
+
+<head>
+    <style>
+        /* 화면을 꽉 채우는 크기를 최소 높이값으로 설정 */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header id="header"></header>
+
+    <!-- 본문 -->
+    <div id="content"></div>
+
+    <!-- 푸터 -->
+    <footer id="footer"></footer>
+</body>
+
+</html>
