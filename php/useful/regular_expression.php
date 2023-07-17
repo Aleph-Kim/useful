@@ -1,4 +1,4 @@
-<?php
+<?
 class Regular_expression
 {
     public function 정규식()

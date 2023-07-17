@@ -1,4 +1,4 @@
-<?php
+<?
 class basic_php
 {
     public function 페이지네이션()
@@ -24,29 +24,29 @@ class basic_php
 <!-- 페이지네이션 html -->
 <input type="hidden" id="page" value="<?= (!empty($params['page']) ? $params['page'] : 1) ?>">
 <div class="number_list_whole">
-    <?php if ($pagination['page'] != 1) { ?>
+    <? if ($pagination['page'] != 1) { ?>
         <a onclick="window.location.replace('<?= $pagination['base_url'] . ($pagination['page'] - 1) ?>')">
             <p class="page_prev">
                 <span></span>
             </p>
         </a>
-    <?php } ?>
-    <?php foreach ($pagination['List'] as $pageNo) { ?>
-        <?php if ($pageNo == $pagination['page']) { ?>
+    <? } ?>
+    <? foreach ($pagination['List'] as $pageNo) { ?>
+        <? if ($pageNo == $pagination['page']) { ?>
             <p class="push"><a><?= $pageNo ?></a></p>
-        <?php } else { ?>
+        <? } else { ?>
             <a onclick="window.location.replace('<?= $pagination['base_url'] . $pageNo ?>')">
                 <p>
                     <?= $pageNo ?>
                 </p>
             </a>
-        <?php } ?>
-    <?php } ?>
-    <?php if ($pagination['last']) { ?>
+        <? } ?>
+    <? } ?>
+    <? if ($pagination['last']) { ?>
         <a onclick="window.location.replace('<?= $pagination['base_url'] . ($pagination['page'] + 1) ?>')">
             <p class="page_next">
                 <span></span>
             </p>
         </a>
-    <?php } ?>
+    <? } ?>
 </div>

@@ -1,4 +1,4 @@
-<?php class ScrollPaging
+<? class ScrollPaging
 {
     // 데이터를 가져오는 프로세스
     public function get_data_process()

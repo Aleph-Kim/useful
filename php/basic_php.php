@@ -1,4 +1,4 @@
-<?php
+<?
 class basic_php
 {
     // 기본 ajax process 함수

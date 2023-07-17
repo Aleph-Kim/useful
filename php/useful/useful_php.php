@@ -1,4 +1,4 @@
-<?php
+<?
 class Useful_php
 {
     public function 유용한()
