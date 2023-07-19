@@ -87,6 +87,23 @@ function copyToClipboard() {
     }
 };
 
+/**
+ * form value값을 반환하는 함수
+ * @param {string} formId - 폼태그 id
+ * 
+ * @returns {object} formValue - 폼 value
+ */
+function getFormValues(formId) {
+    const formValue = {};
+    const formElements = $(`#${formId}`).serializeArray();
+
+    $.each(formElements, function (index, element) {
+        formValue[element.name] = element.value;
+    });
+
+    return formValue;
+}
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
