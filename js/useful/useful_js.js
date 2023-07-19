@@ -104,6 +104,15 @@ function getFormValues(formId) {
     return formValue;
 }
 
+/**
+ * 값이 비어있는지 검사하는 함수
+ * @param {*} value 검사할 값
+ * @returns {boolean} 빈 값 여부
+ */
+function isEmpty(value) {
+    return value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0);
+}
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
