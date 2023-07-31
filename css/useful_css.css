@@ -2,6 +2,37 @@
 .텍스트제한태그 {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Ex) 2줄 제한 */
+    -webkit-line-clamp: 2;
+    /* Ex) 2줄 제한 */
     -webkit-box-orient: vertical;
 }
+
+/* x 아이콘 Start*/
+/* (사용 Ex. <div class="x-icon"></div>) */
+.x-icon {
+    width: 30px;
+    /* 아이콘의 가로 크기 */
+    height: 30px;
+    /* 아이콘의 세로 크기 */
+    position: relative;
+}
+
+/* X 모양 아이콘 */
+.x-icon:before,
+.x-icon:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 2px;
+    background-color: #333;
+    /* 아이콘의 색상 */
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.x-icon:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* x 아이콘 End */
