@@ -15,6 +15,7 @@
     height: 30px;
     /* 아이콘의 세로 크기 */
     position: relative;
+    cursor: pointer;
 }
 
 /* X 모양 아이콘 */
