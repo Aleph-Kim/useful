@@ -25,4 +25,18 @@ class Useful_function
         // 그 외 (02/0504/0505/010/011/031)
         return preg_replace('/(^02|^0504|^0505|^0\d{2})(\d+)?(\d{4})$/', '$1-$2-$3', $number);
     }
+
+    /**
+     * 배열을 간편히 출력하기 위한 함수
+     */
+    public function showObj()
+    {
+        $obj = array();
+        $obj = var_export($obj, true);
+
+        echo '<pre>';
+        echo highlight_string("<?\n\$array = " . $obj . ";\n?>");
+        echo '</pre>';
+        exit;
+    }
 }
