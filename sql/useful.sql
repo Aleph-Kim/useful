@@ -1,6 +1,6 @@
 -- varchar 자료형인 칼럼 숫자 기준 order_by
 -- Ex) 전 : 1, 10, 2 / 후 : 1, 2, 10
-ORDER BY ABS(varchar_int)
+ORDER BY ABS(varchar_int);
 
 -- Ex) group by 시
 SELECT 
@@ -10,7 +10,7 @@ FROM
 GROUP BY 
     e.varchar_int
 ORDER BY 
-    varchar_int
+    varchar_int;
 
 -- 테이블 구조 복사
 CREATE TABLE IF NOT EXISTS `new_table` LIKE `old_table`;
@@ -46,16 +46,25 @@ $ : 끝값
 SELECT 
     COUNT(*) / COUNT(DISTINCT DATE(regdate)) as avg_count
 FROM 
-    example_table
+    example_table;
 
 -- 일평균 데이터 카운트(최초 데이터 생성 ~ 마지막 데이터 생성)
 SELECT 
     COUNT(*) / DATEDIFF(MIN(regdate), MIN(regdate)) AS avg_count
 FROM 
-    example_table
+    example_table;
 
 -- 일평균 데이터 카운트(최초 데이터 생성 ~ 현재)
 SELECT 
     COUNT(*) / DATEDIFF(NOW(), MIN(regdate)) AS avg_count
 FROM 
+    example_table;
+
+-- 날짜별 데이터 카운트(빈 날짜 제외)
+SELECT 
+    COUNT(*) as count, 
+    DATE(regdate) as date
+FROM 
     example_table
+GROUP BY 
+	DATE(regdate);
