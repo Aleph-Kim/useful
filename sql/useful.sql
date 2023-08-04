@@ -31,3 +31,21 @@ $ : 끝값
 [.] : 괄호 안의 문자열 일치 확인
 {.} : 반복
 | : or
+
+-- 일평균 데이터 카운트(빈 날짜 제외)
+SELECT 
+    COUNT(*) / COUNT(DISTINCT DATE(regdate)) as avg_count
+FROM 
+    example_table
+
+-- 일평균 데이터 카운트(최초 데이터 생성 ~ 마지막 데이터 생성)
+SELECT 
+    COUNT(*) / DATEDIFF(MIN(regdate), MIN(regdate)) AS avg_count
+FROM 
+    example_table
+
+-- 일평균 데이터 카운트(최초 데이터 생성 ~ 현재)
+SELECT 
+    COUNT(*) / DATEDIFF(NOW(), MIN(regdate)) AS avg_count
+FROM 
+    example_table
