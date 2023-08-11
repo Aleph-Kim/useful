@@ -92,5 +92,8 @@ class Useful_php
         $encrypted = openssl_encrypt($password, 'aes-256-cbc', $key);
         // aes 256 복호화
         $decrypted = openssl_decrypt($password, 'aes-256-cbc', $key);
+
+        // 사용 가능한 암호화 알고리즘 리스트
+        openssl_get_cipher_methods();
     }
 }
