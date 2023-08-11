@@ -84,5 +84,8 @@ class Useful_php
 
         // curl 통신 속도 개선을 위한 ipv4 지정
         curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4); 
+
+        // curl 통신 결과를 기다리지 않고 종료 (10ms 뒤에 종료)
+        curl_setopt($ch, CURLOPT_TIMEOUT_MS, 10);
     }
 }
