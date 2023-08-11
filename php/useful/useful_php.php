@@ -81,5 +81,8 @@ class Useful_php
 
         // 변수 자료형 확인
         $변수자료형 = gettype($변수);
+
+        // curl 통신 속도 개선을 위한 ipv4 지정
+        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4); 
     }
 }
