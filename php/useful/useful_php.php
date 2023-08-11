@@ -62,7 +62,7 @@ class Useful_php
 
         // 배열 첫 번째 순서에 값 추가
         array_rand($배열, $첫번째값);
-        
+
         // 배열 특정 순서에 값 추가/수정
         array_splice($배열, $추가할위치, $수정할개수, $추가할배열);
         // Ex) 배열의 2번째 자리에 있는 값을 예시배열로 변경 (수정할개수를 0으로 지정 시 예시배열 추가)
@@ -83,9 +83,14 @@ class Useful_php
         $변수자료형 = gettype($변수);
 
         // curl 통신 속도 개선을 위한 ipv4 지정
-        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4); 
+        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
 
         // curl 통신 결과를 기다리지 않고 종료 (10ms 뒤에 종료)
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, 10);
+
+        // aes 256 암호화
+        $encrypted = openssl_encrypt($password, 'aes-256-cbc', $key);
+        // aes 256 복호화
+        $decrypted = openssl_decrypt($password, 'aes-256-cbc', $key);
     }
 }
