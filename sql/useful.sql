@@ -71,3 +71,8 @@ FROM
     example_table
 GROUP BY 
 	DATE(regdate);
+
+-- 칼럼값의 특정 문자 이전을 기준으로 그룹 (Full URL을 파라미터 분리 후 그룹 짓기 용이함)
+SELECT SUBSTRING_INDEX(`url`, '?', 1) AS grouped_url, COUNT(*) AS url_count
+FROM example_table
+GROUP BY grouped_url;
