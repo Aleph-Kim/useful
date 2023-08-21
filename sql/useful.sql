@@ -72,7 +72,10 @@ FROM
 GROUP BY 
 	DATE(regdate);
 
--- 칼럼값의 특정 문자 이전을 기준으로 그룹 (Full URL을 파라미터 분리 후 그룹 짓기 용이함)
+-- 칼럼 값의 특정 문자 이전만 가져오기 
+SELECT SUBSTRING_INDEX(column, '특정 문자', 1)
+FROM example_table;
+-- EX. Full URL의 파라미터 부분을 분리 후 GROUP BY
 SELECT SUBSTRING_INDEX(`url`, '?', 1) AS grouped_url, COUNT(*) AS url_count
 FROM example_table
 GROUP BY grouped_url;
