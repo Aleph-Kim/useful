@@ -115,6 +115,8 @@ function isEmpty(value) {
 
 /**
  * 회원가입 등 페이지에서 비밀번호 입력값이 유효한 지 검증하는 함수
+ * 
+ * 비밀번호 규칙 - 8~20자의 영문, 숫자, 특수문자의 조합
  */
 function passwordCheck() {
     var password = _.trim($('[name="password"]').val()); // 비밀번호 입력 input
