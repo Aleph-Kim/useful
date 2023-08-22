@@ -113,6 +113,53 @@ function isEmpty(value) {
     return value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0);
 }
 
+/**
+ * 회원가입 등 페이지에서 비밀번호 입력값이 유효한 지 검증하는 함수
+ */
+function passwordCheck() {
+    var password = _.trim($('[name="password"]').val()); // 비밀번호 입력 input
+    var rePassword = _.trim($('[name="re_password"]').val()); // 비밀번호 재입력 input
+    var errTxtTag = $('.error_text'); // 에러 문구 출력 태그
+
+    var regSize = /^.{8,20}$/; // 길이 제한 정규식
+    var regEng = /[a-zA-Z]/; // 영어 포함 정규식
+    var reg_num = /\d+/; // 숫자 포함 정규식
+    var regSpecial = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-=|]/; // 특수문자 포함 정규식
+
+
+    if (isEmpty(password)) {
+        errTxtTag.text("비밀번호를 입력해주세요.").show();
+        return;
+    }
+    if (regSize.test(password) == false) {
+        errTxtTag.text("8자 ~ 20자 이내로 입력해 주세요.").show();
+        return;
+    }
+    if (regEng.test(password) == false) {
+        errTxtTag.text("영어가 포함되지 않았습니다.").show();
+        return;
+    }
+    if (reg_num.test(password) == false) {
+        errTxtTag.text("숫자가 포함되지 않았습니다.").show();
+        return;
+    }
+    if (regSpecial.test(password) == false) {
+        errTxtTag.text("특수문자가 포함되지 않았습니다.").show();
+        return;
+    }
+    if (isEmpty(rePassword)) {
+        errTxtTag.text("비밀번호를 재입력해주세요.").show();
+        return;
+    }
+    if (password !== rePassword) {
+        errTxtTag.text('비밀번호가 일치하지 않습니다.').show();
+        return;
+    }
+
+    errTxtTag.hide();
+    passCheckAllow = true; //  비밀번호 검증 완료 여부
+}
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
