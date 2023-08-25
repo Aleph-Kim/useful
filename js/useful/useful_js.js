@@ -162,6 +162,40 @@ function passwordCheck() {
     passCheckAllow = true; //  비밀번호 검증 완료 여부
 }
 
+//------------------------ CapsLock 관련 Strat ------------------------
+/**
+ * CapsLock이 켜져있는지 확인하는 함수
+ *
+ * @param {Event} e
+ */
+function check_capslock(e) {
+    $('.capslockp').hide();
+    var obj = $(':focus').attr('id');
+    var s = String.fromCharCode(e.keyCode);
+    if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) {
+        window.capsLockEnabled = true;
+        if ($('#capslockp_' + obj).length == 0) {
+            $('#' + obj).after('<p class="capslockp text-guide" id="capslockp_' + obj + '" style="display:none; margin-top: 5px; color:red;">CapsLock이 켜져 있습니다.</p>');
+        }
+        $('#capslockp_' + obj).show();
+    }
+    else {
+        window.capsLockEnabled = false;
+        $('#capslockp_' + obj).hide();
+    }
+}
+/**
+ * 입력받은 태그에 이벤트 리스너를 추가하는 함수
+ * 
+ * @param {object} obj - 확인할 태그 Ex - $('#password')
+ */
+function check_capslock_form(obj) {
+    obj.keypress(check_capslock);
+}
+
+check_capslock_form($('input[type=password]'));
+//------------------------ CapsLock 관련 End ------------------------
+
 // 새로고침 시 스크롤 최상단으로 이동
 history.scrollRestoration = "manual";
 
