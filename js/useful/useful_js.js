@@ -174,7 +174,7 @@ function check_capslock(e) {
     var obj = $(':focus').attr('name'); // 입력중인 태그의 name값
     var s = String.fromCharCode(e.keyCode); // 입력한 문자
 
-    if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) { // 입력한 문자의 값이 대문자로 변환한 값과 같고 쉬프트키를 사용한 입력이 아닐 경우
+    if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) { // 입력한 문자의 값이 대문자로 변환한 값과 같고, 소문자로 변환한 값과 다르며 쉬프트키를 사용한 입력이 아닐 경우
         if ($('#capslockp_' + obj).length == 0) {
             $(`input[name=${obj}]`).after('<p class="capslockp" id="capslockp_' + obj + '" style="color:red; margin-top: 5px;" hidden>CapsLock이 켜져 있습니다.</p>');
         }
