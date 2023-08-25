@@ -169,28 +169,29 @@ function passwordCheck() {
  * @param {Event} e
  */
 function check_capslock(e) {
-    $('.capslockp').hide();
-    var obj = $(':focus').attr('id');
-    var s = String.fromCharCode(e.keyCode);
-    if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) {
-        window.capsLockEnabled = true;
+    $('.capslockp').hide(); // 모든 capslock 문구 숨기기
+
+    var obj = $(':focus').attr('name'); // 입력중인 태그의 name값
+    var s = String.fromCharCode(e.keyCode); // 입력한 문자
+
+    if (s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey) { // 입력한 문자의 값이 대문자로 변환한 값과 같고 쉬프트키를 사용한 입력이 아닐 경우
         if ($('#capslockp_' + obj).length == 0) {
-            $('#' + obj).after('<p class="capslockp text-guide" id="capslockp_' + obj + '" style="display:none; margin-top: 5px; color:red;">CapsLock이 켜져 있습니다.</p>');
+            $(`input[name=${obj}]`).after('<p class="capslockp" id="capslockp_' + obj + '" style="color:red; margin-top: 5px;" hidden>CapsLock이 켜져 있습니다.</p>');
         }
         $('#capslockp_' + obj).show();
     }
     else {
-        window.capsLockEnabled = false;
         $('#capslockp_' + obj).hide();
     }
 }
+
 /**
  * 입력받은 태그에 이벤트 리스너를 추가하는 함수
  * 
  * @param {object} obj - 확인할 태그 Ex - $('#password')
  */
 function check_capslock_form(obj) {
-    obj.keypress(check_capslock);
+    obj.keypress(check_capslock); // 입력 이벤트 리스너 추가
 }
 
 check_capslock_form($('input[type=password]'));
