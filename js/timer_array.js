@@ -1,5 +1,5 @@
 /** @type {array} 시간 차이 ms 배열 */
-var timer_arr = [];
+var timerArr = [];
 
 /**
  * 입력받은 타이머 종료 시간을 기준으로 타이머를 생성하고 남은 시간 문자열을 반환하는 함수
@@ -8,31 +8,31 @@ var timer_arr = [];
  * @returns {String} 남은 시간
  */
 function getDiffTime(time, key) {
-    var now_time = new Date();
+    var nowTime = new Date();
     var deadline = new Date(time);
 
-    if (now_time > deadline) {
+    if (nowTime > deadline) {
         return '타이머가 종료 되었습니다.';
     } else {
-        var { diff_time, diff_hour, diff_minute, diff_second } = calculationDiffTime(deadline, now_time);
+        var { diffTime, diffHour, diffMinute, diffSecond } = calculationDiffTime(deadline, nowTime);
 
-        if (timer_arr[key] == undefined) {
-            timer_arr[key] = diff_time;
+        if (timerArr[key] == undefined) {
+            timerArr[key] = diffTime;
         }
 
 
-        return `남은 시간 ${diff_hour}:${diff_minute}:${diff_second}</span>`;
+        return `남은 시간 ${diffHour}:${diffMinute}:${diffSecond}</span>`;
     }
 }
 /**
  * 입력 받은 두 시간의 차이를 ms단위 시간, 남은 시 / 분 / 초로 반환해주는 함수
  * @param {object} deadline 종료 시간
- * @param {object} now_time 현재 시간
+ * @param {object} nowTime 현재 시간
  * @returns 전체에서 차이나는 ms단위 시간, 남은 시 / 분 / 초
  */
-function calculationDiffTime(deadline, now_time) {
-    var diff_time = Math.trunc((deadline - now_time) / 1000);
-    return getDiffHMS(diff_time);
+function calculationDiffTime(deadline, nowTime) {
+    var diffTime = Math.trunc((deadline - nowTime) / 1000);
+    return getDiffHMS(diffTime);
 }
 
 /**
@@ -47,27 +47,27 @@ function setSaleTimer(time, key) {
             delete timer[key];
             clearInterval(timer);
         } else {
-            var { diff_hour, diff_minute, diff_second } = getDiffHMS(time);
+            var { diffHour, diffMinute, diffSecond } = getDiffHMS(time);
 
-            $(`.${key}`).html(`${diff_hour}:${diff_minute}:${diff_second}`);
+            $(`.${key}`).html(`${diffHour}:${diffMinute}:${diffSecond}`);
             time--;
             timer[key] = time;
         }
     }, 1000);
-    timer_arr.push(timer);
+    timerArr.push(timer);
 }
 
 /**
  * 입력받은 ms 단위 시간을 시 / 분 / 초 단위로 환산 해주는 함수
- * @param {number} diff_time ms단위 시간
+ * @param {number} diffTime ms단위 시간
  * @returns 남은 시 / 분 / 초
  */
-function getDiffHMS(diff_time) {
-    var criterion_time = Math.floor(diff_time / 60);
-    var diff_hour = Math.floor(criterion_time / 60).zf(2);
-    var diff_minute = (criterion_time % 60).zf(2);
-    var diff_second = (diff_time % 60).zf(2);
-    return { diff_hour, diff_minute, diff_second };
+function getDiffHMS(diffTime) {
+    var criterionTime = Math.floor(diffTime / 60);
+    var diffHour = Math.floor(criterionTime / 60).zf(2);
+    var diffMinute = (criterionTime % 60).zf(2);
+    var diffSecond = (diffTime % 60).zf(2);
+    return { diffHour, diffMinute, diffSecond };
 }
 
 /**
@@ -75,7 +75,7 @@ function getDiffHMS(diff_time) {
  */
 function saleTimerStart() {
     resetSaleTimer();
-    timer_arr.forEach((time, key) => {
+    timerArr.forEach((time, key) => {
         setSaleTimer(time, key);
     });
 }
@@ -84,10 +84,10 @@ function saleTimerStart() {
  * 모든 타이머를 종료하는 함수
  */
 function resetSaleTimer() {
-    timer_arr.forEach(timer => {
+    timerArr.forEach(timer => {
         clearInterval(timer);
     });
-    timer_arr = [];
+    timerArr = [];
 }
 
 /**

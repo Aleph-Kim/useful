@@ -1,21 +1,21 @@
 /** @type {Number} 시간 차이 ms */
-var diff_time;
+var diffTime;
 
 /**
  * 현재 시간을 기준으로 입력받은 종료 시간까지 타이머를 작동 시키는 함수
- * @param {String} end_time 종료 시간
+ * @param {String} endTime 종료 시간
  * @param {String} tag 타이머 텍스트가 들어갈 태그
  */
-function setTimer(end_time, tag) {
-    var deadline_time = new Date(end_time);
-    var now_time = new Date();
-    if (now_time > deadline_time) {
+function setTimer(endTime, tag) {
+    var deadlineTime = new Date(endTime);
+    var nowTime = new Date();
+    if (nowTime > deadlineTime) {
         $(tag).text(`타이머가 종료되었습니다.`);
     } else {
-        var { diff_ms, diff_hour, diff_minute, diff_second } = calculationDiffTime(deadline_time, now_time);
-        diff_time = diff_ms;
+        var { diffMs, diffHour, diffMinute, diffSecond } = calculationDiffTime(deadlineTime, nowTime);
+        diffTime = diffMs;
 
-        $(tag).text(`${diff_hour}:${diff_minute}:${diff_second}`);
+        $(tag).text(`${diffHour}:${diffMinute}:${diffSecond}`);
         timerStart(tag);
     }
 }
@@ -23,15 +23,15 @@ function setTimer(end_time, tag) {
 /**
  * 입력 받은 두 시간의 차이를 ms단위 시간, 남은 시 / 분 / 초로 반환해주는 함수
  * @param {object} deadline 종료 시간
- * @param {object} now_time 현재 시간
+ * @param {object} nowTime 현재 시간
  * @returns 전체에서 차이나는 ms단위 시간, 남은 시 / 분 / 초
  */
-function calculationDiffTime(deadline_time, now_time) {
-    var diff_ms = Math.trunc((deadline_time - now_time) / 1000);
+function calculationDiffTime(deadlineTime, nowTime) {
+    var diffMs = Math.trunc((deadlineTime - nowTime) / 1000);
 
-    var { diff_hour, diff_minute, diff_second } = getDiffHMS(diff_ms);
+    var { diffHour, diffMinute, diffSecond } = getDiffHMS(diffMs);
 
-    return { diff_ms, diff_hour, diff_minute, diff_second };
+    return { diffMs, diffHour, diffMinute, diffSecond };
 }
 
 /**
@@ -41,29 +41,29 @@ function calculationDiffTime(deadline_time, now_time) {
  function timerStart(tag) {
     clearInterval(timer);
     var timer = setInterval(function () {
-        if (diff_time == 0) {
+        if (diffTime == 0) {
             $(tag).text(`타이머가 종료되었습니다.`);
             clearInterval(timer);
         } else {
-            var { diff_hour, diff_minute, diff_second } = getDiffHMS(diff_time);
+            var { diffHour, diffMinute, diffSecond } = getDiffHMS(diffTime);
 
-            $(tag).text(`${diff_hour}:${diff_minute}:${diff_second}`);
-            diff_time--;
+            $(tag).text(`${diffHour}:${diffMinute}:${diffSecond}`);
+            diffTime--;
         }
     }, 1000);
 }
 
 /**
  * 입력받은 ms 단위 시간을 시 / 분 / 초 단위로 환산 해주는 함수
- * @param {number} diff_time ms단위 시간
+ * @param {number} diffTime ms단위 시간
  * @returns 남은 시 / 분 / 초
  */
-function getDiffHMS(diff_ms) {
-    var criterion_time = Math.floor(diff_ms / 60);
-    var diff_hour = Math.floor(criterion_time / 60).zf(2);
-    var diff_minute = (criterion_time % 60).zf(2);
-    var diff_second = (diff_ms % 60).zf(2);
-    return { diff_hour, diff_minute, diff_second };
+function getDiffHMS(diffMs) {
+    var criterionTime = Math.floor(diffMs / 60);
+    var diffHour = Math.floor(criterionTime / 60).zf(2);
+    var diffMinute = (criterionTime % 60).zf(2);
+    var diffSecond = (diffMs % 60).zf(2);
+    return { diffHour, diffMinute, diffSecond };
 }
 
 /**

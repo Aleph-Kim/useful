@@ -125,7 +125,7 @@ function passwordCheck() {
 
     var regSize = /^.{8,20}$/; // 길이 제한 정규식
     var regEng = /[a-zA-Z]/; // 영어 포함 정규식
-    var reg_num = /\d+/; // 숫자 포함 정규식
+    var regNum = /\d+/; // 숫자 포함 정규식
     var regSpecial = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/\-=|]/; // 특수문자 포함 정규식
 
 
@@ -141,7 +141,7 @@ function passwordCheck() {
         errTxtTag.text("영어가 포함되지 않았습니다.").show();
         return;
     }
-    if (reg_num.test(password) == false) {
+    if (regNum.test(password) == false) {
         errTxtTag.text("숫자가 포함되지 않았습니다.").show();
         return;
     }

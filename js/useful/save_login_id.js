@@ -59,10 +59,10 @@ $(document).ready(function () {
 
         if ($("#save_checkbox").is(":checked")) {
             // 쿠키 보관일
-            var save_days = 7;
-            var user_id = $("#id_input").val();
+            var saveDays = 7;
+            var userId = $("#id_input").val();
 
-            setCookie("user_id", user_id, save_days);
+            setCookie("user_id", userId, saveDays);
         } else {
             deleteCookie("user_id");
         }
