@@ -32,6 +32,13 @@ class Useful_php
             return $오브젝트1['정렬할 기준'] < $오브젝트2['정렬할 기준'];
         });
 
+        /**
+         * 오브젝트 배열 안의 특정 값으로 새로운 배열 생성
+         */
+        $newArray = array_map(function ($object) {
+            return $object['key'];
+        }, $objectArray);
+
         // 숫자 두 자리로 만들기 예) 01, 02, 03
         sprintf('%02d', $숫자);
 
