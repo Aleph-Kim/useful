@@ -7,6 +7,11 @@
     -webkit-box-orient: vertical;
 }
 
+/* 단어 단위로 줄바꿈 */
+.단어단위줄바꿈태그{
+    word-break: keep-all;
+}
+
 /* x 아이콘 Start*/
 /* (사용 Ex. <div class="x-icon"></div>) */
 .x-icon {
