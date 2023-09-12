@@ -22,6 +22,9 @@ var internetPhoneReg = /^\d{4}\d{4}$/;
 // 휴대전화번호
 var cellPhoneReg = /^(\d{2,3})(\d{3,4})(\d{4})$/;
 
+// 공백 제거
+var 공백제거 = 공백포함.replace(/\s/g, '');
+
 /**
  * 전화번호 자동 하이픈 변환
  * @param {*} phone 전화번호
