@@ -110,7 +110,7 @@ function getFormValues(formId) {
  * @returns {boolean} 빈 값 여부
  */
 function isEmpty(value) {
-    return value === null || value === undefined || value === '' || (Array.isArray(value) && value.length === 0);
+    return value === null || value === undefined || value.trim() === '' || (Array.isArray(value) && value.length === 0);
 }
 
 /**
