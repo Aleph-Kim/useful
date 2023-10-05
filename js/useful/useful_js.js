@@ -69,6 +69,8 @@ $('tag').on('click', function () {
 
 /**
  * 클립보드 복사 함수
+ * 
+ * comment) 클립보드 복사가 정상적으로 작동하지 않을 경우 execCommand 방식만 사용
  */
 function copyToClipboard() {
     // 복사할 대상을 현재 url로 선언
