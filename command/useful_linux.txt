@@ -1,3 +1,11 @@
 # 디렉토리 사이즈 조회
 du -sh (디렉토리 경로)
 Ex. du -sh /home/image/2023/09/25
+
+
+# 특정 경로 내 모든 파일의 소유자와 그룹, 권한 일괄 변경
+current_directory=특정_경로
+chown -R 소유자:그룹 "$current_directory" && chmod -R 권한 "$current_directory"
+Ex. /home/directory 경로 내 모든 파일의 소유자와 그룹을 "test"로 변경, 권한은 -rwxrwxrwx로 변경
+    current_directory=/home/directory
+    chown -R test:test "$current_directory" && chmod -R 777 "$current_directory"
