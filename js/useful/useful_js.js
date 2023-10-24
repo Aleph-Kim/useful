@@ -164,6 +164,20 @@ function passwordCheck() {
     passCheckAllow = true; //  비밀번호 검증 완료 여부
 }
 
+/**
+ * input max length에 도달 시 다음 input으로 넘겨주는 함수
+ * 
+ * @param {input} ths - 입력 인풋
+ */
+function maxNextTab(ths) {
+    var max = ths.maxLength;
+    var now = ths.value.length;
+
+    if (now >= max) {
+        $(ths).next('input').focus();
+    }
+}
+
 //------------------------ CapsLock 관련 Strat ------------------------
 /**
  * CapsLock이 켜져있는지 확인하는 함수
