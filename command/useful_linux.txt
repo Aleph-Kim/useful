@@ -1,3 +1,6 @@
+# mac ip 조회
+ifconfig | grep inet
+
 # 디렉토리 사이즈 조회
 du -sh (디렉토리 경로)
 Ex 1. /home/image 디렉토리의 사이즈를 조회
