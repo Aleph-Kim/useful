@@ -104,5 +104,9 @@ class Useful_php
 
         // 사용 가능한 암호화 알고리즘 리스트
         openssl_get_cipher_methods();
+
+        // 에러 로그 브라우저에서 확인
+        error_reporting(E_ALL);
+        ini_set('display_errors', '1');
     }
 }
