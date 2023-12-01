@@ -69,4 +69,32 @@ class Useful_function
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // SSL 인증서 검증 비활성화 (보안 연결 설정)
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, 10); // 10ms 뒤에 통신 종료(반환값을 기다리지 않음)
     }
+
+    /**
+     * XSS(Cross-Site Scripting) 취약 문자 처리 함수
+     * 
+     * @param string $data 공격 문자열
+     * @return string 처리 문자열
+     */
+    private function xssClean($data)
+    {
+        // HTML 인코드 되어있는 문자 디코드
+        $data = html_entity_decode($data);
+
+        // "on"으로 시작하는 모든 속성을 태그에서 제거 (Ex. onclick, onerror)
+        $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:\s*o\s*n\s*)[^>]*+#iu', '$1', $data);
+        
+        // href 속성을 태그에서 제거
+        $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:\s*h\s*r\s*e\s*f\s*)[^>]*+#iu', '$1', $data);
+
+        // javascript: 프로토콜 삭제
+        $data = preg_replace('/\b\s*j\s*a\s*v\s*a\s*s\s*c\s*r\s*i\s*p\s*t\s*:/i', 'nojavascript', $data);
+        // vbscript: 프로토콜 삭제
+        $data = preg_replace('/\b\s*v\s*b\s*s\s*c\s*r\s*i\s*p\s*t\s*:/i', 'novbscript', $data);
+
+        // HTML 특수 문자 치환
+        $data = str_replace(['<', '>', '(', ')', "'", '"'], ['&lt;', '&gt;', '&#40;', '&#41;', '&#x27;', '&quot;'], $data);
+
+        return $data;
+    }
 }
