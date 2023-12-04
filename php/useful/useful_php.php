@@ -19,6 +19,11 @@ class Useful_php
         // 현재로부터의 시간은 다음과 같이 연산 가능
         $ago_from_now = date('Y-m-d', strtotime('연산 날짜'));
 
+        // 시간 차이 구하기
+        date_diff(date_create('대상시간'), date_create(date('Y-m-d')));
+        // 예) 현재와 2023년 12월 4일의 날짜 차이
+        date_diff(date_create('2023-12-04'), date_create(date('Y-m-d')))->days;
+
         // date()에 사용하는 알파벳
         // https://www.habonyphp.com/2020/07/php-date.html
 
