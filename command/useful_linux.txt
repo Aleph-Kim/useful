@@ -20,3 +20,6 @@ chown -R 소유자:그룹 "$current_directory" && chmod -R 권한 "$current_dire
 Ex. /home/directory 경로 내 모든 파일의 소유자와 그룹을 "test"로 변경, 권한은 -rwxrwxrwx로 변경
     current_directory=/home/directory
     chown -R test:test "$current_directory" && chmod -R 777 "$current_directory"
+
+# requirements.txt 자동 생성
+pip freeze > requirements.txt
