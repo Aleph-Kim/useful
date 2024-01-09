@@ -8,7 +8,7 @@ var emailReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z]
 var urlReg = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
 // 숫자
-var numReg = /[^0-9]/;
+var numReg = /[^0-9]/g;
 
 // 년-월-일 (YYYY-mm-dd)
 var dateReg = /(\d{4})(\d{2})(\d{2})/;
