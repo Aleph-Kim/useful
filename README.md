@@ -18,7 +18,6 @@
 
 ## js
 1. event_listener_all.txt - 이벤트 리스너 전체 리스트
-   
 ### useful
 1. date.js - 시간 관련
 2. number.js - 수 관련
@@ -33,8 +32,9 @@
 1. regular_expression.php - 정규식 관련
 2. masking.php - 마스킹 관련
 
-## program
+## python
 
+## program
 1. ajax_loading - ajax 통신 중 로딩 이미지를 출력하는 프로그램
 2. scrollpaging - 스크롤 최하단 도달 시 새로운 데이터를 불러오는 스크롤 페이징 프로그램
 3. date_format - js에서 php의 date 함수를 모방하여 date format 할 수 있는 프로그램
