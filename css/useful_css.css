@@ -43,6 +43,20 @@
 
 /* x 아이콘 End */
 
+/* 갈매기 화살표 아이콘 Start */
+.chevron-down-arrow {
+    position: relative;
+}
+.chevron-down-arrow::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    transform: rotate(45deg);
+}
+/* 화살표 아이콘 End */
 
 /* 테이블에 border 넣기(아래 속성을 추가해야 테이블에 border 속성이 적용됨) */
 table {
