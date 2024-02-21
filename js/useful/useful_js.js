@@ -224,6 +224,15 @@ form.addEventListener('submit', (event) => {
     console.log(new FormData(form));
 });
 
+/**
+ * 접속 기기의 모바일 여부를 반환하는 함수
+ * 
+ * @returns {boolean} - 모바일 여부
+ */
+function isMobile() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 // 페이지 로드 시  함수 실행
 document.addEventListener("DOMContentLoaded", function () {
     함수();
