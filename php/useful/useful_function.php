@@ -61,7 +61,7 @@ class Useful_function
         curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4); // IP 주소 해결 방식을 IPv4로 설정 (IPv6 대응, 해제 시 통신 속도 저하)
         $result = curl_exec($ch); // cURL 요청을 실행하고 응답 데이터 받기
         curl_close($ch); // cURL 세션 닫기
-        
+
         return $result;
 
 
@@ -83,7 +83,7 @@ class Useful_function
 
         // "on"으로 시작하는 모든 속성을 태그에서 제거 (Ex. onclick, onerror)
         $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:\s*o\s*n\s*)[^>]*+#iu', '$1', $data);
-        
+
         // href 속성을 태그에서 제거
         $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:\s*h\s*r\s*e\s*f\s*)[^>]*+#iu', '$1', $data);
 
@@ -96,5 +96,18 @@ class Useful_function
         $data = str_replace(['<', '>', '(', ')', "'", '"'], ['&lt;', '&gt;', '&#40;', '&#41;', '&#x27;', '&quot;'], $data);
 
         return $data;
+    }
+
+    /**
+     * 접속 기기의 모바일 여부를 반환하는 함수
+     * 
+     * @return boolean - 모바일 여부
+     */
+    public static function isMobile()
+    {
+        $userAgent = $_SERVER['HTTP_USER_AGENT'];
+        $pattern = '/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/';
+        $isMobile = preg_match($pattern, $userAgent);
+        return $isMobile;
     }
 }
