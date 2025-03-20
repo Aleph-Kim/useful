@@ -113,5 +113,8 @@ class Useful_php
         // 에러 로그 브라우저에서 확인
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
+
+        // 한국 시간대 설정
+        date_default_timezone_set('Asia/Seoul');
     }
 }
