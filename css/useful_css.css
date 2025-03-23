@@ -62,3 +62,8 @@
 table {
     border-collapse: collapse;
 }
+
+/* 이미지 비율 유지(이미지 로드가 늦어져도 레이아웃이 무너지지 않음) */
+img {
+    aspect-ratio: 1 / 1; /* 이미지가 1:1 비율일 경우 */
+}
