@@ -110,4 +110,31 @@ class Useful_function
         $isMobile = preg_match($pattern, $userAgent);
         return $isMobile;
     }
+
+    /**
+     * 접속 기기의 운영체제를 반환하는 함수
+     * 
+     * @return string - 운영체제
+     */
+    public static function checkOs()
+    {
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+
+        switch (true) {
+            case strpos($user_agent, 'Android'):
+                return 'android';
+            case strpos($user_agent, 'iPhone'):
+            case strpos($user_agent, 'iPad'):
+            case strpos($user_agent, 'iPod'):
+                return 'ios';
+            case strpos($user_agent, 'Windows'):
+                return 'windows';
+            case strpos($user_agent, 'Macintosh'):
+                return 'mac';
+            case strpos($user_agent, 'Linux'):
+                return 'linux';
+            default:
+                return 'unknown';
+        }
+    }
 }
